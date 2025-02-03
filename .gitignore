@@ -1,0 +1,16 @@
+/venv
+/env
+*.pyc
+*.cfg
+__pycache__
+node_modules
+*.egg-*
+.vscode
+.DS_*
+*.rdb
+.env
+.venv
+experiment
+cache
+checkmk
+uptime-kuma

@@ -1,0 +1,30 @@
+#!env python
+
+import datetime
+import zoneinfo
+import asyncio
+
+from ifdash import models, services
+from ifdash.controller import sla
+
+#START_TIME = "2024-01-01"
+START_TIME = "2024-01-01"
+END_TIME = "2024-08-23"
+# END_TIME = datetime.date.today().strftime("%Y-%m-%d")
+
+async def main():
+    start_time = datetime.datetime.strptime(START_TIME,"%Y-%m-%d").astimezone(zoneinfo.ZoneInfo('Asia/Bangkok'))
+    end_time = datetime.datetime.strptime(END_TIME,"%Y-%m-%d").astimezone(zoneinfo.ZoneInfo('Asia/Bangkok'))
+
+    # await models.init_default_beanie_client()
+    summarizer = sla.Summarizer()
+    await summarizer.initial()
+
+    await summarizer.summarize_daily(start_time, end_time, 'Asia/Bangkok')
+    await summarizer.summarize_monthly(start_time, end_time, 'Asia/Bangkok')
+
+    await summarizer.summarize_groups_daily(start_time, end_time, 'Asia/Bangkok')
+    await summarizer.summarize_groups_monthly(start_time, end_time, 'Asia/Bangkok')
+
+if __name__ == '__main__':
+    asyncio.run(main())

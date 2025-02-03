@@ -1,0 +1,3 @@
+#!/bin/sh
+
+IFDASH_SETTINGS=$(pwd)/.env poetry run ifdash-dash -H 0.0.0.0 -d

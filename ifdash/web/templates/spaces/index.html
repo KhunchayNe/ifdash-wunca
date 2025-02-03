@@ -1,0 +1,30 @@
+{% if current_user.is_authenticated %}
+  {% extends '/base/default-dashboard.html' %}
+{% else %}
+  {% extends '/base/default-page.html' %}
+{% endif %}
+{% import '/base/name-utils.html' as name_utils %}
+
+{% block dashboard_title %}Equipment{% endblock %}
+
+{% block breadcrumbs %}
+  {% if request.endpoint == 'equipments.index' %}
+    <div class="active section">Equipment</div>
+  {% else %}
+    <a class="section" href="{{ url_for('equipments.index') }}">Equipment</a>
+    <div class="divider"> / </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if current_user.is_authenticated %}
+    <div class="ui segment">
+      {#
+      <a class="ui icon primary button" href="{{ url_for('equipments.create_or_edit') }}"><i class="ui add icon"></i> Create</a>
+      #}
+    </div>
+  {% endif %}
+
+  <div class="ui segment">
+  </div>
+{% endblock %}

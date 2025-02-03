@@ -1,0 +1,3 @@
+#!/bin/sh
+
+FLASK_ENV=development IFDASH_SETTINGS=$(pwd)/ifdash-development.cfg poetry run ifdash-worker

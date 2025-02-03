@@ -1,0 +1,161 @@
+# version: '3'
+services:
+  redis:
+    image: redis/redis-stack-server
+    container_name: ifdash-redis
+    volumes:
+      - ../deployment/ifdash/redis/data:/data
+    restart: always
+    networks:
+      - default
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mongodb:
+    image: mongo
+    container_name: ifdash-mongodb
+    volumes:
+      - ../deployment/ifdash/mongodb/data/db:/data/db
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    networks:
+      - default
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  web:
+    build: .
+    image: ifdash-image
+    container_name: ifdash-web
+    volumes:
+      - .:/app
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
+      - redis
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - default
+    restart: always
+    environment:
+      IFDASH_SETTINGS: /app/.env
+    env_file:
+      - .env
+    command: 
+      # /venv/bin/gunicorn -w 8 --bind 0.0.0.0:8080 "ifdash.web:create_app()"
+      ./scripts/run-web
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  controller:
+    build: .
+    image: ifdash-image
+    container_name: ifdash-controller
+    volumes:
+      - ../deployment:/deployment
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - mongodb
+      - redis
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - default
+    restart: always
+    # environment:
+    # IFDASH_SETTINGS: /app/ifdash-production.cfg
+    env_file:
+      - .env
+    command: /venv/bin/ifdash-controller
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  worker:
+    build: .
+    image: ifdash-image
+    container_name: ifdash-worker
+    volumes:
+      - ../deployment:/deployment
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - mongodb
+      - redis
+    links:
+      - mongodb
+      - redis
+    restart: always
+    env_file:
+      - .env
+
+    command: /venv/bin/ifdash-worker
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  uptime-kuma:
+    container_name: uptime-kuma
+    image: louislam/uptime-kuma
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./uptime-kuma:/app/data
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv6.conf.eth0.proxy_ndp=1
+      - net.ipv6.conf.all.forwarding=1
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      default:
+
+  checkmk:
+    container_name: checkmk
+    image: checkmk/check-mk-raw:2.3.0-latest
+    tmpfs:
+      - /opt/omd/sites/cmk/tmp:uid=1000,gid=1000
+    ulimits:
+      nofile: 1024
+    volumes:
+      - ./checkmk:/omd/sites
+      - ./backup:/backup
+      - /etc/resolv.conf:/etc/resolv.conf:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - CMK_SITE_ID=WUNCA
+      - CMK_PASSWORD=123456
+    ports:
+      - 5000:5000
+      - 8000:8000
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv6.conf.eth0.proxy_ndp=1
+      - net.ipv6.conf.all.forwarding=1
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+networks:
+  default:
+

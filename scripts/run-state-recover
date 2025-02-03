@@ -1,0 +1,65 @@
+#!env python
+
+import datetime
+import zoneinfo
+import asyncio
+import json
+import queue
+
+from ifdash import models, services
+from ifdash.controller import sla
+
+from dotenv import dotenv_values
+
+
+#START_TIME = "2024-01-01"
+START_TIME = "2024-01-01"
+END_TIME = "2024-08-23"
+# END_TIME = datetime.date.today().strftime("%Y-%m-%d")
+
+async def main():
+    config = dotenv_values(".env")
+    config['MONITORS'] = json.loads(config.get("MONITORS", "[]"))
+
+
+    start_time = datetime.datetime.strptime(START_TIME,"%Y-%m-%d").astimezone(zoneinfo.ZoneInfo('Asia/Bangkok'))
+    end_time = datetime.datetime.strptime(END_TIME,"%Y-%m-%d").astimezone(zoneinfo.ZoneInfo('Asia/Bangkok'))
+
+    iter_time = start_time
+
+    managers=[]
+    queues = [queue.Queue()]
+    for monitor in confog.get("MONITORS", []):
+        match monitor:
+            case "checkmk":
+                self.managers.append(
+                    checkmk.CheckMKManager(config, queues)
+                )
+            case "uptime-kuma":
+                self.managers.append(
+                    uptime_kuma.UptimeKumaManager(config, queues)
+                )
+
+
+
+    while iter_time < end_time:
+        print(iter_time)
+        iter_time += datetime.timedelta(minutes=1)
+
+        for manager in managers:
+            await manager.get_by_time(iter_time)
+        
+
+
+    # await models.init_default_beanie_client()
+    # summarizer = sla.Summarizer()
+    # await summarizer.initial()
+
+    # await summarizer.summarize_daily(start_time, end_time, 'Asia/Bangkok')
+    # await summarizer.summarize_monthly(start_time, end_time, 'Asia/Bangkok')
+
+    # await summarizer.summarize_groups_daily(start_time, end_time, 'Asia/Bangkok')
+    # await summarizer.summarize_groups_monthly(start_time, end_time, 'Asia/Bangkok')
+
+if __name__ == '__main__':
+    asyncio.run(main())
