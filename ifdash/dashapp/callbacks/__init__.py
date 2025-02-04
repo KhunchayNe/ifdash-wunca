@@ -5,5 +5,4 @@ from . import slas
 from . import campuses
 from . import hatyai_campus
 from . import slas_graph
-from . import psu_web_slas_graph
-from . import datas
+from . import web_slas_graph

@@ -131,9 +131,7 @@ def render_layout(page):
                 children=[
                     dbc.Row(
                         [
-                            dbc.Col(
-                                [sla_card(f"{page} PSU Web", "bi bi-browser-chrome")]
-                            ),
+                            dbc.Col([sla_card(f"{page} Web", "bi bi-browser-chrome")]),
                             # dbc.Col([sla_card(f"{page} PSU AD", "bi bi-server")]),
                         ]
                     ),

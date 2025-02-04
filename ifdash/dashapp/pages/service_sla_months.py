@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from . import sla_layouts
 import datetime
 
-dash.register_page(__name__, path_template="/slas/months/psu-service")
+dash.register_page(__name__, path_template="/slas/months/service")
 
 show_service_sla_graph_interval = dcc.Interval(
     id="show-service-sla-month-graph-interval",

@@ -21,15 +21,7 @@ from .. import redis_caches
 TIMEOUT = 60
 
 METRICS = {
-    "outside-psu": "internet",
-    "ISP": "psu-isp",
-    "PSU-CORE-NETWORK": "psu-core",
-    "PSU-HDY-NETWORK": "psu-hat-yai-campus",
-    "PSU-HDY-Backbone": "psu-hat-yai-campus-backbone",
-    "PSU-HDY-Wireless": "psu-hat-yai-campus-wireless",
-    "PSU-HDY-All-Unit": "psu-hat-yai-campus-all-unit",
-    "AD": "psu-ad",
-    "HTTP": "psu-web",
+    "HTTP": "web",
 }
 
 

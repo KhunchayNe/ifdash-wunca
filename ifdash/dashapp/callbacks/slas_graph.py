@@ -197,12 +197,7 @@ def get_sla_month(groups, type="host", enable_host=False):
         enable_host=enable_host,
         timezone="Asia/Bangkok",
     )
-    # print(datetime.datetime.now(), groups, "get month sla", iter_date, before_date)
     combine_results(month_results, results)
-
-    # import pprint
-
-    # pprint.pprint(results)
 
     return results
 

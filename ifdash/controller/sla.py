@@ -21,18 +21,7 @@ class Summarizer:
         )
         self.granularity_mapers = dict(daily="day", monthly="month")
         self.group_names = [
-            "PSU-HDY-Backbone",
-            "PSU-HDY-Wireless",
-            "PSU-HDY-All-Unit",
-            "ISP",
-            "PSU-CORE-NETWORK",
             "PSU WEB",
-            "PSU SIS",
-            "PSU HR",
-            "PSU Operation",
-            "PSU Education",
-            "PSU Student EILA",
-            "Authentication",
         ]
 
     async def initial(self):
