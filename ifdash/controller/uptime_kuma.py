@@ -8,9 +8,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-from ifdash import clients
-
-
 class UptimeKumaManager:
     def __init__(self, config: dict, queues):
         self.config = config

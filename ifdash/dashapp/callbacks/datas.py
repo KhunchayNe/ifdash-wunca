@@ -9,7 +9,7 @@ from ifdash import models
 from ifdash.web import caches
 from ifdash.dashapp import managers
 
-from ifdash.clients import checkmk, influxdb
+from ifdash.clients import checkmk
 
 import pprint
 import datetime

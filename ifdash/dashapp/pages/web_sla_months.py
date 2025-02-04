@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from . import sla_layouts
 import datetime
 
-dash.register_page(__name__, path_template="/slas/months/psu-web")
+dash.register_page(__name__, path_template="/slas/months/web")
 
 current_date_interval = dcc.Interval(
     id="current-date-interval",

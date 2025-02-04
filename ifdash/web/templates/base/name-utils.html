@@ -1,8 +1,0 @@
-{% macro get_object_name(obj, prefix="name", divider=" | ") -%}
-  {{ obj | attr(prefix) }}
-  {%- for key in ['_zh', '_en'] %}
-    {%- if obj | attr(prefix+key) %}
-      {{ divider ~ obj | attr(prefix+key) }}
-    {%- endif %}
-  {%- endfor %}
-{%- endmacro %}

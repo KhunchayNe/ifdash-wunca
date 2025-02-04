@@ -2,8 +2,6 @@ import optparse
 
 from flask import Flask
 
-# from werkzeug.middleware.dispatcher import DispatcherMiddleware
-
 from ifdash import dashapp
 from . import views
 from . import caches
@@ -12,7 +10,7 @@ from .. import clients
 from .. import models
 
 from . import acl
-from . import oauth2
+# from . import oauth2
 
 
 def create_app():
@@ -25,9 +23,8 @@ def create_app():
 
     clients.checkmk.client.init_app(flask_app)
     models.init_db(flask_app)
-    # clients.influxdb.client.init_app(flask_app)
 
-    oauth2.init_oauth(flask_app)
+    # oauth2.init_oauth(flask_app)
     acl.init_acl(flask_app)
 
     dashapp.init_dash(flask_app)

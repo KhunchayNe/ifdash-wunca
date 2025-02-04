@@ -12,7 +12,7 @@ import time
 logger = logging.getLogger(__name__)
 
 
-from ifdash import models, clients
+from ifdash import models
 
 from . import storage
 from . import checkmk

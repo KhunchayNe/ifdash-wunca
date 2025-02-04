@@ -2,10 +2,10 @@
 name = "ifdash"
 version = "0.1.0"
 description = ""
-authors = ["Thanathip Limna <tl@coe.psu.ac.th>"]
+authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python="^3.12"
+python = "^3.11"
 dash = {extras = ["diskcache"], version = "^2.14.0"}
 dash-bootstrap-components = "^1.4.2"
 rq = "^1.15.1"

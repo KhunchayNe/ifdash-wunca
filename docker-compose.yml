@@ -4,7 +4,7 @@ services:
     image: redis/redis-stack-server
     container_name: ifdash-redis
     volumes:
-      - ../deployment/ifdash/redis/data:/data
+      - ./redis/data:/data
     restart: always
     networks:
       - default
@@ -17,7 +17,7 @@ services:
     image: mongo
     container_name: ifdash-mongodb
     volumes:
-      - ../deployment/ifdash/mongodb/data/db:/data/db
+      - ./mongodb/data/db:/data/db
       - /etc/localtime:/etc/localtime:ro
     restart: always
     networks:
@@ -51,7 +51,7 @@ services:
       - .env
     command: 
       # /venv/bin/gunicorn -w 8 --bind 0.0.0.0:8080 "ifdash.web:create_app()"
-      ./scripts/run-web
+      /venv/bin/ifdash-dash -H 0.0.0.0 -P 8080 -d      
     logging:
       options:
         max-size: "10m"
@@ -62,6 +62,7 @@ services:
     image: ifdash-image
     container_name: ifdash-controller
     volumes:
+      - .:/app
       - ../deployment:/deployment
       - /etc/localtime:/etc/localtime:ro
     links:
@@ -83,29 +84,6 @@ services:
         max-size: "10m"
         max-file: "3"
 
-  worker:
-    build: .
-    image: ifdash-image
-    container_name: ifdash-worker
-    volumes:
-      - ../deployment:/deployment
-      - /etc/localtime:/etc/localtime:ro
-    depends_on:
-      - mongodb
-      - redis
-    links:
-      - mongodb
-      - redis
-    restart: always
-    env_file:
-      - .env
-
-    command: /venv/bin/ifdash-worker
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "3"
-
   uptime-kuma:
     container_name: uptime-kuma
     image: louislam/uptime-kuma
@@ -115,10 +93,6 @@ services:
     ports:
       - 3001:3001
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-      - net.ipv6.conf.eth0.proxy_ndp=1
-      - net.ipv6.conf.all.forwarding=1
     logging:
       options:
         max-size: "10m"
@@ -146,10 +120,8 @@ services:
       - 5000:5000
       - 8000:8000
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-      - net.ipv6.conf.eth0.proxy_ndp=1
-      - net.ipv6.conf.all.forwarding=1
+    networks:
+      - default
     logging:
       options:
         max-size: "10m"

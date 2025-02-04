@@ -24,7 +24,7 @@ get_sla_interval = dcc.Interval(
 def layout():
     dom = html.Div(
         children=[
-            html.H1(children=["PSU ", html.Span(id="current-date")]),
+            html.H1(children=["WUNCA SLA ", html.Span(id="current-date")]),
             sla_layouts.render_layout("Current"),
             navigations.render_simple_menu(),
             dcc.Store(id="current-sla-memory"),

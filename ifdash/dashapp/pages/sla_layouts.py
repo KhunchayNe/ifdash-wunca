@@ -125,56 +125,7 @@ def sla_card(title, icon="bi bi-globe"):
 def render_layout(page):
     dom = html.Div(
         children=[
-            html.H2(children="PSU SLA"),
-            html.Div(
-                id="host-sla",
-                children=[
-                    dbc.Row(
-                        [
-                            dbc.Col([sla_card(f"{page} Internet")]),
-                            dbc.Col([sla_card(f"{page} PSU ISP")]),
-                            dbc.Col(
-                                [
-                                    sla_card(
-                                        f"{page} PSU CORE", icon="bi bi-diagram-3-fill"
-                                    )
-                                ]
-                            ),
-                        ]
-                    ),
-                ],
-            ),
-            html.H2(
-                children="PSU Hat Yai Campus SLA",
-                style={"padding-top": "1em"},
-            ),
-            dbc.Row(
-                [
-                    dbc.Col(
-                        [sla_card(f"{page} PSU Hat Yai Campus", "bi bi-diagram-3-fill")]
-                    ),
-                    dbc.Col(
-                        [
-                            sla_card(
-                                f"{page} PSU Hat Yai Campus Backbone",
-                                "bi bi-diagram-3-fill",
-                            )
-                        ]
-                    ),
-                    dbc.Col(
-                        [sla_card(f"{page} PSU Hat Yai Campus Wireless", "bi bi-wifi")]
-                    ),
-                    dbc.Col(
-                        [
-                            sla_card(
-                                f"{page} PSU Hat Yai Campus All Unit",
-                                "bi bi-diagram-3-fill",
-                            )
-                        ]
-                    ),
-                ]
-            ),
-            html.H2(children="PSU Service SLA", style={"padding-top": "1em"}),
+            html.H2(children="WUNCA Service SLA", style={"padding-top": "1em"}),
             html.Div(
                 id="serice-sla",
                 children=[
@@ -183,7 +134,7 @@ def render_layout(page):
                             dbc.Col(
                                 [sla_card(f"{page} PSU Web", "bi bi-browser-chrome")]
                             ),
-                            dbc.Col([sla_card(f"{page} PSU AD", "bi bi-server")]),
+                            # dbc.Col([sla_card(f"{page} PSU AD", "bi bi-server")]),
                         ]
                     ),
                 ],

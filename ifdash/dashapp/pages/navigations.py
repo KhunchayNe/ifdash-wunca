@@ -13,11 +13,6 @@ def render_simple_menu():
                         external_link=True,
                     ),
                     dbc.NavLink(
-                        "Campus",
-                        href="/dashboard/campuses",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
                         "Campus SLA Month",
                         href="/dashboard/slas/months/campuses",
                         external_link=True,
@@ -28,38 +23,18 @@ def render_simple_menu():
                         external_link=True,
                     ),
                     dbc.NavLink(
-                        "Hat Yai WiFi Network",
-                        href="/dashboard/campuses/hatyai/wifi",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
                         "Hat Yai Campus SLA Month",
                         href="/dashboard/slas/months/hatyai",
                         external_link=True,
                     ),
                     dbc.NavLink(
                         "PSU Web",
-                        href="/dashboard/slas/months/psu-web",
+                        href="/dashboard/slas/months/web",
                         external_link=True,
                     ),
                     dbc.NavLink(
                         "PSU Service",
-                        href="/dashboard/slas/months/psu-service",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "Host",
-                        href="/dashboard/hosts",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "Service",
-                        href="/dashboard/services",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "Event",
-                        href="/dashboard/events",
+                        href="/dashboard/slas/months/service",
                         external_link=True,
                     ),
                 ]

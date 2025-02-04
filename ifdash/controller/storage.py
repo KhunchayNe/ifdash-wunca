@@ -3,9 +3,7 @@ import datetime
 import asyncio
 import copy
 
-# import influxdb_client
-# from influxdb_client.client.write_api import SYNCHRONOUS
-from ifdash import models, clients
+from ifdash import models
 
 import logging
 
@@ -15,18 +13,6 @@ logger = logging.getLogger(__name__)
 class StorageManager:
     def __init__(self, config):
         self.config = config
-
-        # self.influxdb_client = clients.influxdb.InfluxDBClientProxy(
-        #     url=self.config.get("INFLUXDB_V2_URL", ""),
-        #     token=self.config.get("INFLUXDB_V2_TOKEN", ""),
-        #     org=self.config.get("INFLUXDB_V2_ORG", ""),
-        # )
-
-        # self.client = self.influxdb_client.influx_client
-        # self.bucket = self.config.get("INFLUXDB_V2_BUCKET", "DIIS")
-        # self.write_api = self.client.write_api(write_options=SYNCHRONOUS)
-        # self.query_api = self.client.query_api()
-
     async def initial(self):
         self.beanie_client = models.BeanieClient()
         await models.init_default_beanie_client(
