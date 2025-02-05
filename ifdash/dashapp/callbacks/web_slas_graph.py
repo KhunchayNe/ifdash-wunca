@@ -175,12 +175,7 @@ def show_web_sla_month_graph(n_intervals):
 
 
 @dash.callback(
-    dash.Output("web-psu-sis-sla-month-graph", "children"),
-    dash.Output("web-psu-hr-sla-month-graph", "children"),
-    dash.Output("web-psu-operation-sla-month-graph", "children"),
-    dash.Output("web-psu-education-sla-month-graph", "children"),
-    dash.Output("web-psu-student-eila-sla-month-graph", "children"),
-    dash.Output("web-psu-authentication-sla-month-graph", "children"),
+    dash.Output("web-service-sla-month-graph", "children"),
     dash.Input("show-service-sla-month-graph-interval", "n_intervals"),
     # prevent_initial_call=True,
 )
@@ -192,12 +187,7 @@ def show_web_sla_month_graph(n_intervals):
     now = datetime.datetime.now()
 
     group_names = [
-        "PSU SIS",
-        "PSU HR",
-        "PSU Operation",
-        "PSU Education",
-        "PSU Student EILA",
-        "Authentication",
+        "Service",
     ]
     results = slas_graph.get_sla_group_month(group_names, type="service")
     for group_name in group_names:
