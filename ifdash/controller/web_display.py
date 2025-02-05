@@ -5,8 +5,6 @@ import asyncio
 import time
 import copy
 
-# import influxdb_client
-# from influxdb_client.client.write_api import SYNCHRONOUS
 from ifdash import models, services
 import redis.asyncio as redis
 from redis.commands.json.path import Path

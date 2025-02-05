@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 class StorageManager:
     def __init__(self, config):
         self.config = config
+
     async def initial(self):
         self.beanie_client = models.BeanieClient()
         await models.init_default_beanie_client(

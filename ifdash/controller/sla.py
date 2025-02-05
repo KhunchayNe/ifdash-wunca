@@ -3,8 +3,6 @@ import datetime
 import asyncio
 import zoneinfo
 
-# import influxdb_client
-# from influxdb_client.client.write_api import SYNCHRONOUS
 from ifdash import models, services
 
 import logging
@@ -21,7 +19,7 @@ class Summarizer:
         )
         self.granularity_mapers = dict(daily="day", monthly="month")
         self.group_names = [
-            "PSU WEB",
+            "Service",
         ]
 
     async def initial(self):

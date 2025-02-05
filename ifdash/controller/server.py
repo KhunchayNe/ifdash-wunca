@@ -262,9 +262,6 @@ class WebDisplayController(Controller):
 
             await self.web_display.get_campuses_states()
 
-            # if seconds % (10 * 60) == 0:
-            #     await self.web_display.get_groups_sla()
-
             await asyncio.sleep(1)
 
 
