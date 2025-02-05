@@ -68,14 +68,16 @@ services:
     links:
       - mongodb
       - redis
+      - checkmk
+      - uptime-kuma
     depends_on:
       - mongodb
       - redis
+      - checkmk
+      - uptime-kuma
     networks:
       - default
     restart: always
-    # environment:
-    # IFDASH_SETTINGS: /app/ifdash-production.cfg
     env_file:
       - .env
     command: /venv/bin/ifdash-controller

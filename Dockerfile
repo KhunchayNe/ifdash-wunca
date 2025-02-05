@@ -14,7 +14,7 @@ RUN $PYTHON -m pip install wheel poetry gunicorn
 
 WORKDIR /app
 
-ENV IFDASH_SETTINGS=/app/ifdash-production.cfg
+ENV IFDASH_SETTINGS=/app/.env
 
 COPY ifdash/cmd /app/ifdash/cmd
 COPY poetry.lock pyproject.toml /app/

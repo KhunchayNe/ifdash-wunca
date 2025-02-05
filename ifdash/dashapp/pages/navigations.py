@@ -13,6 +13,11 @@ def render_simple_menu():
                         external_link=True,
                     ),
                     dbc.NavLink(
+                        "Web",
+                        href="/dashboard/slas/months/web",
+                        external_link=True,
+                    ),
+                    dbc.NavLink(
                         "Campus SLA Month",
                         href="/dashboard/slas/months/campuses",
                         external_link=True,
@@ -25,11 +30,6 @@ def render_simple_menu():
                     dbc.NavLink(
                         "Hat Yai Campus SLA Month",
                         href="/dashboard/slas/months/hatyai",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "PSU Web",
-                        href="/dashboard/slas/months/web",
                         external_link=True,
                     ),
                     dbc.NavLink(

@@ -9,22 +9,10 @@ import zoneinfo
 class SLAService:
     def __init__(self, sync=False, client=None):
         self.MODEL_MAPPERS = {
-            "outside-psu": models.HostState,
-            "ISP": models.HostState,
-            "PSU-CORE-NETWORK": models.HostState,
-            "PSU-HDY-NETWORK": models.HostState,
-            "PSU-HDY-Backbone": models.HostState,
-            "PSU-HDY-Wireless": models.APState,
-            "PSU-HDY-All-Unit": models.HostState,
-            "AD": models.ServiceState,
+            "NETWORK": models.HostState,
+            "Wireless": models.APState,
+            "Service": models.ServiceState,
             "HTTP": models.ServiceState,
-            "PSU Web": models.ServiceState,
-            "PSU SIS": models.ServiceState,
-            "PSU HR": models.ServiceState,
-            "PSU Student EILA": models.ServiceState,
-            "PSU Operation": models.ServiceState,
-            "PSU Education": models.ServiceState,
-            "Authentication": models.ServiceState,
         }
 
         self.STATE_INDEX = ["up", "down", "unreach", "downtime", "unknow", "total"]

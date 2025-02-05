@@ -28,12 +28,10 @@ from . import slas_graph
 
 TIMEOUT = 5 * 60
 
-CAMPUS_WEB_MAPER = {
-    "main": "Primary PSU Website",
-    "pattani": "Pattani Campus Website",
-    "phuket": "Phuket Campus Website",
-    "suratthani": "Suratthani Campus Website",
-    "trang": "Trang Campus Website",
+GROUP_WEB_MAPER = {
+    "google": "Google",
+    "facebook": "Facebook",
+    "github": "github",
 }
 
 
@@ -76,12 +74,10 @@ def get_service_30days_sla(groups, enable_host=True):
 
 
 @dash.callback(
-    dash.Output("web-psu-sla-30days-graph", "children"),
-    dash.Output("web-main-sla-month-graph", "children"),
-    dash.Output("web-pattani-sla-month-graph", "children"),
-    dash.Output("web-phuket-sla-month-graph", "children"),
-    dash.Output("web-suratthani-sla-month-graph", "children"),
-    dash.Output("web-trang-sla-month-graph", "children"),
+    dash.Output("web-sla-30days-graph", "children"),
+    dash.Output("web-google-sla-month-graph", "children"),
+    dash.Output("web-facebook-sla-month-graph", "children"),
+    dash.Output("web-github-sla-month-graph", "children"),
     dash.Input("show-web-sla-month-graph-interval", "n_intervals"),
 )
 def show_web_sla_month_graph(n_intervals):
@@ -90,7 +86,7 @@ def show_web_sla_month_graph(n_intervals):
     graphs = []
     now = datetime.datetime.now()
 
-    group_name = "PSU Web"
+    group_name = "Service"
     results = get_web_30days_sla([group_name], enable_host=True)
 
     df = pandas.DataFrame.from_dict(results.get(group_name, {}))
@@ -112,19 +108,17 @@ def show_web_sla_month_graph(n_intervals):
         color="host_name",
         color_discrete_map={
             "Down": "red",
-            "PSU Main Web": "#009CDE",
-            "PSU Pattani Web": "#315DAE",
-            "PSU Phuket Web": "#0085AD",
-            "PSU Suratthani Web": "#59CBE8",
-            "PSU Trang Web": "#003C71",
+            "Google": "#009CDE",
+            "Facebook": "#315DAE",
+            "Github": "#0085AD",
         },
     )
-    graphs.append(dash.dcc.Graph(id="web-psu-sla-30days-graph-content", figure=fig))
+    graphs.append(dash.dcc.Graph(id="web-sla-30days-graph-content", figure=fig))
 
     results = slas_graph.get_sla_month([group_name], type="service", enable_host=True)
 
-    for key, title in CAMPUS_WEB_MAPER.items():
-        process_host_id = ""
+    for key, title in GROUP_WEB_MAPER.items():
+        print(key, title)
         values = dict()
         for host_id, values in results.get(group_name, {}).items():
             index = list(values.keys())[0]
