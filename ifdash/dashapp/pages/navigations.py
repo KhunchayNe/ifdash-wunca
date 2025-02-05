@@ -22,21 +22,21 @@ def render_simple_menu():
                         href="/dashboard/slas/months/campuses",
                         external_link=True,
                     ),
-                    dbc.NavLink(
-                        "Hat Yai Line Network",
-                        href="/dashboard/campuses/hatyai/line",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "Hat Yai Campus SLA Month",
-                        href="/dashboard/slas/months/hatyai",
-                        external_link=True,
-                    ),
-                    dbc.NavLink(
-                        "PSU Service",
-                        href="/dashboard/slas/months/service",
-                        external_link=True,
-                    ),
+                    # dbc.NavLink(
+                    #     "Hat Yai Line Network",
+                    #     href="/dashboard/campuses/hatyai/line",
+                    #     external_link=True,
+                    # ),
+                    # dbc.NavLink(
+                    #     "Hat Yai Campus SLA Month",
+                    #     href="/dashboard/slas/months/hatyai",
+                    #     external_link=True,
+                    # ),
+                    # dbc.NavLink(
+                    #     "PSU Service",
+                    #     href="/dashboard/slas/months/service",
+                    #     external_link=True,
+                    # ),
                 ]
             )
         ]
