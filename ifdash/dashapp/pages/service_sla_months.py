@@ -29,7 +29,7 @@ def layout():
                 [
                     dbc.Col(
                         [
-                            html.H1(["PSU Service 12 Month SLAs"]),
+                            html.H1(["Service 12 Month SLAs"]),
                         ]
                     ),
                     dbc.Col(
@@ -61,7 +61,7 @@ def layout():
                                             ),
                                             "Loading...",
                                         ],
-                                        id="web-psu-sis-sla-month-graph",
+                                        id="service-sla-month-graph",
                                     ),
                                 ],
                             ),
@@ -85,113 +85,7 @@ def layout():
                                             ),
                                             "Loading...",
                                         ],
-                                        id="web-psu-student-eila-sla-month-graph",
-                                    ),
-                                ],
-                            ),
-                        ],
-                        width=6,
-                    ),
-                ]
-            ),
-            html.Div(style=dict(paddingTop="1vh")),
-            dbc.Row(
-                [
-                    dbc.Col(
-                        [
-                            # html.Div([html.H2(["Campus Web SLA"])]),
-                            html.Div(
-                                [
-                                    # html.Div([html.H3(["PSU Primary Web"])]),
-                                    html.Div(
-                                        [
-                                            dbc.Spinner(
-                                                color="primary",
-                                                spinner_style={
-                                                    "width": "3rem",
-                                                    "height": "3rem",
-                                                },
-                                            ),
-                                            "Loading...",
-                                        ],
-                                        id="web-psu-hr-sla-month-graph",
-                                    ),
-                                ],
-                            ),
-                        ],
-                        width=6,
-                    ),
-                    dbc.Col(
-                        [
-                            # html.Div([html.H2(["Campus Web SLA"])]),
-                            html.Div(
-                                [
-                                    # html.Div([html.H3(["PSU Primary Web"])]),
-                                    html.Div(
-                                        [
-                                            dbc.Spinner(
-                                                color="primary",
-                                                spinner_style={
-                                                    "width": "3rem",
-                                                    "height": "3rem",
-                                                },
-                                            ),
-                                            "Loading...",
-                                        ],
-                                        id="web-psu-operation-sla-month-graph",
-                                    ),
-                                ],
-                            ),
-                        ],
-                        width=6,
-                    ),
-                ]
-            ),
-            html.Div(style=dict(paddingTop="1vh")),
-            dbc.Row(
-                [
-                    dbc.Col(
-                        [
-                            # html.Div([html.H2(["Campus Web SLA"])]),
-                            html.Div(
-                                [
-                                    # html.Div([html.H3(["PSU Primary Web"])]),
-                                    html.Div(
-                                        [
-                                            dbc.Spinner(
-                                                color="primary",
-                                                spinner_style={
-                                                    "width": "3rem",
-                                                    "height": "3rem",
-                                                },
-                                            ),
-                                            "Loading...",
-                                        ],
-                                        id="web-psu-education-sla-month-graph",
-                                    ),
-                                ],
-                            ),
-                        ],
-                        width=6,
-                    ),
-                    dbc.Col(
-                        [
-                            # html.Div([html.H2(["Campus Web SLA"])]),
-                            html.Div(
-                                [
-                                    # html.Div([html.H3(["PSU Primary Web"])]),
-                                    html.Div(
-                                        [
-                                            dbc.Spinner(
-                                                color="primary",
-                                                spinner_style={
-                                                    "width": "3rem",
-                                                    "height": "3rem",
-                                                },
-                                            ),
-                                            "Loading...",
-                                        ],
-                                        id="web-psu-authentication-sla-month-graph",
+                                        # id="web-psu-student-eila-sla-month-graph",
                                     ),
                                 ],
                             ),

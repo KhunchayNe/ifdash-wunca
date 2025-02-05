@@ -175,7 +175,7 @@ def show_web_sla_month_graph(n_intervals):
 
 
 @dash.callback(
-    dash.Output("web-service-sla-month-graph", "children"),
+    dash.Output("service-sla-month-graph", "children"),
     dash.Input("show-service-sla-month-graph-interval", "n_intervals"),
     # prevent_initial_call=True,
 )

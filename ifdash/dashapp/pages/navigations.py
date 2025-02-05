@@ -32,11 +32,11 @@ def render_simple_menu():
                     #     href="/dashboard/slas/months/hatyai",
                     #     external_link=True,
                     # ),
-                    # dbc.NavLink(
-                    #     "PSU Service",
-                    #     href="/dashboard/slas/months/service",
-                    #     external_link=True,
-                    # ),
+                    dbc.NavLink(
+                        "Service",
+                        href="/dashboard/slas/months/service",
+                        external_link=True,
+                    ),
                     dbc.NavLink(
                         "Host",
                         href="/dashboard/hosts",
